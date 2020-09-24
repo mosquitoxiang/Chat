@@ -79,6 +79,19 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etContent" />
+
+        <ImageView
+            android:id="@+id/imgSelect"
+            android:layout_width="39dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.373"
+            app:layout_constraintStart_toEndOf="@+id/btnSend"
+            app:layout_constraintTop_toBottomOf="@+id/etContent"
+            app:layout_constraintVertical_bias="0.777"
+            app:srcCompat="@drawable/picture" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
