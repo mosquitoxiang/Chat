@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.imgSelect -> {
                 PermissionX.init(this)
                     .permissions(android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                     android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .request { allGranted, _, _ ->
                         if (allGranted) {
                             Matisse.from(this)
@@ -106,6 +106,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val msgObj = Msg(type = Msg.TYPE_SEND, picUri = it)
                 msgList.add(msgObj)
             }
+            val imageAbsolutePath = UriToPathUtil.getImageAbsolutePath(this, msgList[0].picUri)
             adapter.setNewData(msgList)
         }
     }

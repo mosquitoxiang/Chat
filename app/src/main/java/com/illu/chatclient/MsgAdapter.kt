@@ -1,10 +1,13 @@
 package com.illu.chatclient
 
+import android.content.Context
 import android.net.Uri
 import android.os.Environment
 import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.illu.chatclient.Msg.Companion.TYPE_RECEIVE
@@ -22,34 +25,28 @@ class MsgAdapter(layoutId: Int = R.layout.item_msg) :
         holder.run {
             itemView.run {
                 if (item.picUri != null) {
-                    Luban.with(context)
-                        .load(UriToPathUtil.getImageAbsolutePath(context, item.picUri))
-                        .ignoreBy(100)
-                        .setTargetDir(context.cacheDir.absolutePath)
-                        .setCompressListener(object : OnCompressListener{
-                            override fun onSuccess(file: File?) {
-                                Glide.with(context).load(file).into(imgSelect)
-                            }
-
-                            override fun onError(e: Throwable?) {
-                                
-                            }
-
-                            override fun onStart() {
-                                
-                            }
-
-                        })
-                }
-                if (item.type == TYPE_SEND) {
-                    tvRight.setText(item.content)
-                    tvLeft.visibility = View.GONE
-                } else if (item.type == TYPE_RECEIVE) {
-                    tvLeft.setText(item.content)
-                    tvRight.visibility = View.GONE
+                    if (item.type == TYPE_SEND) {
+                        imgRight.visibility = View.VISIBLE
+                        loadImg(context, item, imgRight)
+                    } else if (item.type == TYPE_RECEIVE) {
+                        imgLeft.visibility = View.VISIBLE
+                        loadImg(context, item, imgLeft)
+                    }
+                } else {
+                    if (item.type == TYPE_SEND) {
+                        tvRight.setText(item.content)
+                        tvRight.visibility = View.VISIBLE
+                    } else if (item.type == TYPE_RECEIVE) {
+                        tvLeft.setText(item.content)
+                        tvLeft.visibility = View.VISIBLE
+                    }
                 }
             }
         }
+    }
+
+    fun loadImg(context: Context, item: Msg, imgView: ImageView) {
+        Glide.with(context).load(item.picUri).into(imgView)
     }
 }
 

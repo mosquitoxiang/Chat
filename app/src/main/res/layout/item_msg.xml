@@ -18,7 +18,20 @@
         android:paddingBottom="10dp"
         android:text="消息"
         android:textColor="#000000"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/imgLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/left"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvRight"
@@ -33,6 +46,19 @@
         android:paddingBottom="10dp"
         android:text="消息"
         android:textColor="#000000"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/imgRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>
